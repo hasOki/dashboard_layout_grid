@@ -1,0 +1,22 @@
+<div class="header">
+    <h3 class="text-muted">Custom PI Component</h3>
+</div>
+
+<div ng-controller="PIModuleLayoutCtrl as pIModuleLayout" class="gridster">
+    <div gridster="gridsterOpts">
+        <ul>
+            <li gridster-item="module" ng-repeat="module in piModuleLayout.modules">
+                <div class="col-xs-12">
+                    <h3>{{ module.label }}</h3>
+                    <div class="config-button"><i class="glyphicon glyphicon-cogs"></i></div>
+                    <div class="delete-button"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p><span class="glyphicon glyphicon-heart"></span> fnHo</p>
+</div>
