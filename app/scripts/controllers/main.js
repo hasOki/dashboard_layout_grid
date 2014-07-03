@@ -5,7 +5,7 @@ angular.module('dashboardLayoutGridApp')
 
     // options from angular gridster
     $scope.gridsterOpts = {
-      columns: 6, // the width of the grid, in columns
+      columns: 2, // the width of the grid, in columns
       pushing: true, // whether to push other items out of the way on move or resize
       floating: true, // whether to automatically float items up so they stack (you can temporarily disable if you are adding unsorted items with ng-repeat)
       width: 'auto', // can be an integer or 'auto'. 'auto' scales gridster to be the full width of its containing element
@@ -28,7 +28,7 @@ angular.module('dashboardLayoutGridApp')
       },
       draggable: {
         enabled: true, // whether dragging items is supported
-        handle: '.my-class', // optional selector for resize handle
+        handle: '.move-handle', // optional selector for resize handle
         start: function(event, uiWidget, $element) {}, // optional callback fired when drag is started,
         drag: function(event, uiWidget, $element) {}, // optional callback fired when item is moved,
         stop: function(event, uiWidget, $element) {} // optional callback fired when item is finished dragging
