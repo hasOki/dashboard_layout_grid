@@ -8,6 +8,7 @@ angular.module('dashboardLayoutGridApp')
       {
         label: 'Test Module 1',
         type : 'module_2',
+        showConfig: false,
         grid : {
           row: 0,
           col: 0,
@@ -18,6 +19,7 @@ angular.module('dashboardLayoutGridApp')
       {
         label: 'Test Module 2',
         type : 'module_1',
+        showConfig: false,
         grid : {
           row: 1,
           col: 0,
@@ -28,6 +30,7 @@ angular.module('dashboardLayoutGridApp')
       {
         label: 'Test Module 3',
         type : 'module_1',
+        showConfig: false,
         grid : {
           row: 1,
           col: 1,
@@ -38,6 +41,7 @@ angular.module('dashboardLayoutGridApp')
       {
         label: 'Test Module 4',
         type : 'module_2',
+        showConfig: false,
         grid : {
           row: 3,
           col: 0,
@@ -65,8 +69,17 @@ angular.module('dashboardLayoutGridApp')
       return '/images/' + type + '_bg.jpg';
     };
 
-    moduleLayout.changePanelConfig = function () {
+    var flipPanel = function(index){
+      moduleLayout.modules[index].showConfig = !moduleLayout.modules[index].showConfig;
+    };
 
+    moduleLayout.changePanelConfig = function (panelIndex) {
+      flipPanel(panelIndex);
+    };
+
+    moduleLayout.saveConfig = function(panelIndex){
+      // TODO: Check for value validation and save it to the API
+      flipPanel(panelIndex);
     };
 
   });

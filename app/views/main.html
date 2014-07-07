@@ -18,19 +18,42 @@
                     <div gridster="gridsterOpts">
                         <ul>
                             <li gridster-item="module.grid" ng-repeat="module in moduleLayout.modules">
-                                <div class="panel panel-default">
-                                    <div class="module-preview" style="background-image: url({{ moduleLayout.getBackgroundImage( module.type ) }})"></div>
-                                    <div class="panel-heading move-handle">
-                                        <div class="delete-button pull-right"
-                                         ng-click="moduleLayout.removePanel($index)" >
-                                             <i class="glyphicon glyphicon-remove-sign"></i>
+                                <div class="panel-container" ng-class="{'show-config': module.showConfig}">
+                                    <div class="panel panel-default panel-preview">
+                                        <div class="module-preview" style="background-image: url({{ moduleLayout.getBackgroundImage( module.type ) }})"></div>
+                                        <div class="panel-heading move-handle">
+                                            <div class="delete-button pull-right"
+                                             ng-click="moduleLayout.removePanel($index)" >
+                                                 <i class="glyphicon glyphicon-remove-sign"></i>
+                                            </div>
+                                            <h3 class="panel-title">{{ module.label }}</h3>
                                         </div>
-                                        <h3 class="panel-title">{{ module.label }}</h3>
+                                        <div class="panel-body">
+                                            <div class="btn btn-default config-button pull-right"
+                                             ng-click="moduleLayout.changePanelConfig($index)" >
+                                                <i class="glyphicon glyphicon-cog"></i> Config
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <div class="btn btn-default config-button pull-right"
-                                         ng-click="moduleLayout.changePanelConfig(this)" >
-                                            <i class="glyphicon glyphicon-pencil"></i>
+                                    <div class="panel panel-default panel-config">
+                                        <div class="panel-heading move-handle">
+                                            <h3 class="panel-title">{{ module.label }} Config</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="col-xs-12">
+                                                <form role="form" class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label for="moduleName" class="control-label col-sm-3">Module Name</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="moduleName" placeholder="Module Name" ng-model="module.label">
+                                                        </div>
+                                                    </div>
+                                                    <div class="btn btn-default config-button pull-right"
+                                                         ng-click="moduleLayout.changePanelConfig($index)" >
+                                                        <i class="glyphicon glyphicon-save"></i> Save Config
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -97,30 +97,60 @@ body {
 // Gridster styles
 .gridster{
   ul{
-    .panel{
+    li{
+      perspective: 800;
+    }
+
+    .panel-container{
+      position: relative;
       height: 100%;
+      transition: all .7s ease-out;
+      transform-style: preserve-3d;
+
+      &.show-config{
+        transform: rotateY(180deg);
+      }
+    }
+
+    .panel{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      backface-visibility: hidden;
+
+      .panel-heading{
+        transform: translateZ(1px);
+        position: relative;
+        cursor: move;
+      }
+
+      .panel-body{
+        transform: translateZ(1px);
+        position: relative;
+      }
+    }
+
+    .panel.panel-preview{
 
       .module-preview{
-        opacity: .2;
         position: absolute;
+        opacity: .2;
         background-size: cover;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
-        z-index: 5;
       }
+    }
 
-      .panel-heading{
-        position: relative;
-        cursor: move;
-        z-index: 10;
-      }
-
-      .panel-body{
-        position: relative;
-        z-index: 10;
-      }
+    .panel.panel-config{
+      background: #999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      transform: rotateY(180deg) translateZ(2px);
     }
   }
 }
