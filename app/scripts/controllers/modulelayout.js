@@ -1,63 +1,64 @@
 'use strict';
 
 angular.module('dashboardLayoutGridApp')
-  .controller('ModuleLayoutCtrl', function ($scope) {
+  .controller('ModuleLayoutCtrl', function () {
     var moduleLayout = this;
 
     moduleLayout.modules = [
       {
         label: 'Test Module 1',
-        type: '',
-        row: 0,
-        col: 0,
-        sizeX: 2,
-        sizeY: 2
+        type : '',
+        grid : {
+          row: 0,
+          col: 0,
+          sizeX: 2,
+          sizeY: 1
+        }
       },
       {
         label: 'Test Module 2',
-        type: '',
-        row: 1,
-        col: 0,
-        sizeX: 1,
-        sizeY: 1
+        type : '',
+        grid : {
+          row: 1,
+          col: 0,
+          sizeX: 1,
+          sizeY: 1
+        }
       },
       {
         label: 'Test Module 3',
-        type: '',
-        row: 1,
-        col: 1,
-        sizeX: 1,
-        sizeY: 1
+        type : '',
+        grid : {
+          row: 1,
+          col: 1,
+          sizeX: 1,
+          sizeY: 1
+        }
       },
       {
         label: 'Test Module 4',
-        type: '',
-        row: 2,
-        col: 0,
-        sizeX: 2,
-        sizeY: 2
-      },
-      {
-        label: 'Test Module 5',
-        type: '',
-        row: 3,
-        col: 0,
-        sizeX: 2,
-        sizeY: 2
+        type : '',
+        grid : {
+          row: 2,
+          col: 0,
+          sizeX: 2,
+          sizeY: 1
+        }
       }
     ];
 
-    moduleLayout.addNewModule = function(){
+    moduleLayout.addNewModule = function () {
       moduleLayout.modules.push({
         label: 'Test Module New',
-        type: ''
+        type : ''
       });
     };
 
-    moduleLayout.removePanel = function(){
+    moduleLayout.removePanel = function (index) {
+      moduleLayout.modules.splice(index,1);
     };
 
-    moduleLayout.changePanelConfig = function(){
+    moduleLayout.changePanelConfig = function () {
 
     };
 

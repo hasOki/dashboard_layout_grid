@@ -10,7 +10,7 @@ angular.module('dashboardLayoutGridApp')
       floating: true, // whether to automatically float items up so they stack (you can temporarily disable if you are adding unsorted items with ng-repeat)
       width: 'auto', // can be an integer or 'auto'. 'auto' scales gridster to be the full width of its containing element
       colWidth: 'auto', // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
-      rowHeight: 'match', // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
+      rowHeight: 200, // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
       margins: [10, 10], // the pixel distance between each widget
       isMobile: false, // stacks the grid items if true
       minColumns: 1, // the minimum columns the grid must have
@@ -21,17 +21,11 @@ angular.module('dashboardLayoutGridApp')
       mobileBreakPoint: 600, // if the screen is not wider that this, remove the grid layout and stack the items
       resizable: {
         enabled: true,
-        handles: 'n, e, s, w, ne, se, sw, nw',
-        start: function(event, uiWidget, $element) {}, // optional callback fired when resize is started,
-        resize: function(event, uiWidget, $element) {}, // optional callback fired when item is resized,
-        stop: function(event, uiWidget, $element) {} // optional callback fired when item is finished resizing
+        handles: 'n, e, s, w, ne, se, sw, nw'
       },
       draggable: {
         enabled: true, // whether dragging items is supported
-        handle: '.move-handle', // optional selector for resize handle
-        start: function(event, uiWidget, $element) {}, // optional callback fired when drag is started,
-        drag: function(event, uiWidget, $element) {}, // optional callback fired when item is moved,
-        stop: function(event, uiWidget, $element) {} // optional callback fired when item is finished dragging
+        handle: '.move-handle' // optional selector for resize handle
       }
     };
   });

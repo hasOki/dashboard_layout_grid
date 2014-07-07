@@ -1,14 +1,13 @@
-<div class="container">
-<div class="header">
-    <h3 class="text-muted">Custom Component Layout</h3>
-</div>
+    <div class="header">
+        <h3 class="text-muted">Custom Component Layout</h3>
+    </div>
 
     <div class="row">
-        <div ng-controller="ModuleLayoutCtrl as moduleLayout" class="gridster col-xs-12">
+        <div ng-controller="ModuleLayoutCtrl as moduleLayout" class="col-xs-12">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="btn btn-primary btn-pill pull-right"
-                        ng-click="moduleLayout.addNewModule()">
+                         ng-click="moduleLayout.addNewModule()">
                         Add New Module
                     </div>
                 </div>
@@ -17,20 +16,22 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div gridster="gridsterOpts">
-                        <ul class="list-unstyled">
-                            <li gridster-item row="module.row" col="module.col" size-x="module.sizeX" size-y="module.sizeY" ng-repeat="module in moduleLayout.modules">
+                        <ul>
+                            <li gridster-item="module.grid" ng-repeat="module in moduleLayout.modules">
                                 <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <div class="delete-button pull-right"
-                                                 ng-click="moduleLayout.removePanel()"
-                                                    ><i class="glyphicon glyphicon-remove-sign"></i></div>
-                                            <h3 class="move-handle panel-title">{{ module.label }}</h3>
+                                    <div class="panel-heading move-handle">
+                                        <div class="delete-button pull-right"
+                                         ng-click="moduleLayout.removePanel($index)" >
+                                             <i class="glyphicon glyphicon-remove-sign"></i>
                                         </div>
-                                        <div class="panel-body">
-                                            <div class="btn btn-default config-button pull-right"
-                                                 ng-click="moduleLayout.changePanelConfig(this)"
-                                                    ><i class="glyphicon glyphicon-pencil"></i></div>
+                                        <h3 class="panel-title">{{ module.label }}</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="btn btn-default config-button pull-right"
+                                         ng-click="moduleLayout.changePanelConfig(this)" >
+                                            <i class="glyphicon glyphicon-pencil"></i>
                                         </div>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -40,7 +41,6 @@
         </div>
     </div>
 
-<div class="footer">
-    <p><span class="glyphicon glyphicon-heart"></span> fnHo</p>
-</div>
-</div>
+    <div class="footer">
+        <p><span class="glyphicon glyphicon-heart"></span> fnHo</p>
+    </div>
