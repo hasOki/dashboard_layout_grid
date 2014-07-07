@@ -14,7 +14,7 @@ angular.module('dashboardLayoutGridApp')
       margins: [10, 10], // the pixel distance between each widget
       isMobile: false, // stacks the grid items if true
       minColumns: 1, // the minimum columns the grid must have
-      minRows: 2, // the minimum height of the grid, in rows
+      minRows: 1, // the minimum height of the grid, in rows
       maxRows: 100,
       defaultSizeX: 2, // the default width of a gridster item, if not specifed
       defaultSizeY: 1, // the default height of a gridster item, if not specified

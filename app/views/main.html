@@ -19,6 +19,7 @@
                         <ul>
                             <li gridster-item="module.grid" ng-repeat="module in moduleLayout.modules">
                                 <div class="panel panel-default">
+                                    <div class="module-preview" style="background-image: url({{ moduleLayout.getBackgroundImage( module.type ) }})"></div>
                                     <div class="panel-heading move-handle">
                                         <div class="delete-button pull-right"
                                          ng-click="moduleLayout.removePanel($index)" >

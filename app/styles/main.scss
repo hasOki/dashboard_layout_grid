@@ -94,13 +94,32 @@ body {
   }
 }
 
+// Gridster styles
 .gridster{
   ul{
     .panel{
       height: 100%;
 
+      .module-preview{
+        opacity: .2;
+        position: absolute;
+        background-size: cover;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 5;
+      }
+
       .panel-heading{
+        position: relative;
         cursor: move;
+        z-index: 10;
+      }
+
+      .panel-body{
+        position: relative;
+        z-index: 10;
       }
     }
   }
