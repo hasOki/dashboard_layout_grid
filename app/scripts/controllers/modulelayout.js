@@ -6,7 +6,7 @@ angular.module('dashboardLayoutGridApp')
 
     moduleLayout.modules = [
       {
-        label: 'Test Module 1',
+        label: 'Default Module A',
         type : 'module_2',
         showConfig: false,
         grid : {
@@ -17,7 +17,7 @@ angular.module('dashboardLayoutGridApp')
         }
       },
       {
-        label: 'Test Module 2',
+        label: 'Default Module B',
         type : 'module_1',
         showConfig: false,
         grid : {
@@ -28,7 +28,7 @@ angular.module('dashboardLayoutGridApp')
         }
       },
       {
-        label: 'Test Module 3',
+        label: 'Default Module C',
         type : 'module_1',
         showConfig: false,
         grid : {
@@ -39,11 +39,22 @@ angular.module('dashboardLayoutGridApp')
         }
       },
       {
-        label: 'Test Module 4',
-        type : 'module_2',
+        label: 'Default Module D',
+        type : 'module_3',
         showConfig: false,
         grid : {
           row: 3,
+          col: 0,
+          sizeX: 2,
+          sizeY: 2
+        }
+      },
+      {
+        label: 'Default Module E',
+        type : 'module_2',
+        showConfig: false,
+        grid : {
+          row: 5,
           col: 0,
           sizeX: 2,
           sizeY: 1

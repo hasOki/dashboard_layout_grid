@@ -6,9 +6,9 @@
         <div ng-controller="ModuleLayoutCtrl as moduleLayout" class="col-xs-12">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="btn btn-primary btn-pill pull-right"
-                         ng-click="moduleLayout.addNewModule()">
-                        Add New Module
+                    <div class="btn btn-primary btn-rounded pull-right"
+                        ng-click="moduleLayout.addNewModule()">
+                        <i class="glyphicon glyphicon-plus"></i>
                     </div>
                 </div>
             </div>
@@ -17,14 +17,14 @@
                 <div class="col-xs-12">
                     <div gridster="gridsterOpts">
                         <ul>
-                            <li gridster-item="module.grid" ng-repeat="module in moduleLayout.modules">
-                                <div class="panel-container" ng-class="{'show-config': module.showConfig}">
-                                    <div class="panel panel-default panel-preview">
+                            <li class="flip-card" gridster-item="module.grid" ng-repeat="module in moduleLayout.modules">
+                                <div class="panel-container flip-card-container" ng-class="{'show-config': module.showConfig}">
+                                    <div class="panel panel-default panel-preview card face">
                                         <div class="module-preview" style="background-image: url({{ moduleLayout.getBackgroundImage( module.type ) }})"></div>
                                         <div class="panel-heading move-handle">
                                             <div class="delete-button pull-right"
                                              ng-click="moduleLayout.removePanel($index)" >
-                                                 <i class="glyphicon glyphicon-remove-sign"></i>
+                                                 <i class="glyphicon glyphicon-minus-sign"></i>
                                             </div>
                                             <h3 class="panel-title">{{ module.label }}</h3>
                                         </div>
@@ -35,7 +35,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel panel-default panel-config">
+                                    <div class="panel panel-default panel-config card tail">
                                         <div class="panel-heading move-handle">
                                             <h3 class="panel-title">{{ module.label }} Config</h3>
                                         </div>

@@ -1,6 +1,6 @@
 $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 
-@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+@import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 
 // bower:scss
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
@@ -94,44 +94,35 @@ body {
   }
 }
 
+.btn-rounded{
+  @include border-top-radius(99px);
+  @include border-bottom-radius(99px);
+  padding: 10px 13px
+}
+
 // Gridster styles
 .gridster{
   ul{
-    li{
-      perspective: 800;
-    }
-
     .panel-container{
-      position: relative;
-      height: 100%;
-      transition: all .7s ease-out;
-      transform-style: preserve-3d;
-
       &.show-config{
         transform: rotateY(180deg);
       }
     }
 
     .panel{
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      backface-visibility: hidden;
-
       .panel-heading{
-        transform: translateZ(1px);
+        transform: translateZ(1px); // Added 1px translate to prevent flickering
         position: relative;
         cursor: move;
       }
 
       .panel-body{
-        transform: translateZ(1px);
+        transform: translateZ(1px); // Added 1px translate to prevent flickering
         position: relative;
       }
     }
 
     .panel.panel-preview{
-
       .module-preview{
         position: absolute;
         opacity: .2;
@@ -145,6 +136,34 @@ body {
 
     .panel.panel-config{
       background: #999;
+    }
+  }
+}
+
+// FlipCard Style
+.flip-card{
+  perspective: 800;
+  position: relative;
+  height: 100%;
+
+  .flip-card-container{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: all .7s ease-out;
+    transform-style: preserve-3d;
+  }
+
+  .card{
+    position: absolute;
+    backface-visibility: hidden;
+    height: 100%;
+    width: 100%;
+
+    &.face{
+    }
+
+    &.tail{
       top: 0;
       left: 0;
       width: 100%;
