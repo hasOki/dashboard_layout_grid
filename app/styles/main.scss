@@ -100,15 +100,32 @@ body {
   padding: 10px 13px
 }
 
+//.container{
+//  transition: 1s ease-in-out all;
+//  // added Panel animation when adding
+//  &.ng-enter{
+//    transform: scale(.1, .1);
+//    &.ng-enter-active{
+//      transform: scale(1, 1);
+//    }
+//  }
+//
+//  // added Panel animation when removing
+//  &.ng-leave{
+//    transform: scale(1, 1);
+//    &.ng-leave-active{
+//      transform: scale(.1, .1);
+//    }
+//  }
+//}
+
 // Gridster styles
 .gridster{
-  ul{
-    .panel-container{
-      &.show-config{
-        transform: rotateY(180deg);
-      }
-    }
+  .gridster-item-moving{
+    box-shadow: 0 0 20px 1px #666;
+  }
 
+  ul{
     .panel{
       .panel-heading{
         transform: translateZ(1px); // Added 1px translate to prevent flickering
@@ -146,12 +163,38 @@ body {
   position: relative;
   height: 100%;
 
+  // added Panel animation when adding
+  &.ng-enter{
+    transition: .3s ease-out all;
+    transform: scale(.1, .1);
+    opacity: 0;
+    &.ng-enter-active{
+      transform: scale(1, 1);
+      opacity: 1;
+    }
+  }
+
+  // added Panel animation when removing
+  &.ng-leave{
+    transition: .2s ease-in all;
+    transform: scale(1, 1);
+    opacity: 1;
+    &.ng-leave-active{
+      transform: scale(.1, .1);
+      opacity: 0;
+    }
+  }
+
   .flip-card-container{
     position: absolute;
     height: 100%;
     width: 100%;
     transition: all .7s ease-out;
     transform-style: preserve-3d;
+
+    &.show-back-side{
+      transform: rotateY(180deg);
+    }
   }
 
   .card{

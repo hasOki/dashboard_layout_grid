@@ -3,6 +3,7 @@
 angular
   .module('dashboardLayoutGridApp', [
     'gridster',
+    'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngSanitize',
