@@ -43,15 +43,15 @@
                                             <div class="col-xs-12">
                                                 <form role="form" class="form-horizontal">
                                                     <div class="form-group">
-                                                        <label for="moduleName" class="control-label col-sm-3">Module Name</label>
+                                                        <label for="moduleName{{ $index }}" class="control-label col-sm-3">Module Name</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" placeholder="Module Name" ng-model="module.label">
+                                                            <input type="text" class="form-control" id="moduleName{{ $index }}" placeholder="Module Name" ng-model="module.label">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="moduleType" class="control-label col-sm-3">Module Type</label>
+                                                        <label for="moduleType{{ $index }}" class="control-label col-sm-3">Module Type</label>
                                                         <div class="col-sm-9">
-                                                            <select class="form-control" ng-model="module.type"
+                                                            <select class="form-control" id="moduleType{{ $index }}" ng-model="module.type"
                                                                 ng-options="opt.value as opt.name for opt in moduleLayout.moduleTypeList">
                                                             </select>
                                                         </div>
