@@ -6,7 +6,7 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('dashboardLayoutGridApp'));
 
   var MainCtrl,
-    scope;
+      scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
@@ -16,7 +16,7 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should have gridster options available in the roots as gridsterOpts', function () {
+    expect(scope.gridsterOpts).toBeDefined();
   });
 });

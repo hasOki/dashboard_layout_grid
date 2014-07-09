@@ -81,7 +81,7 @@ angular.module('dashboardLayoutGridApp')
         moduleLayout.modules[index].showConfig = !moduleLayout.modules[index].showConfig;
       };
 
-      moduleLayout.changePanelConfig = function (panelIndex) {
+      moduleLayout.showPanelConfig = function (panelIndex) {
         flipPanel(panelIndex);
       };
 
