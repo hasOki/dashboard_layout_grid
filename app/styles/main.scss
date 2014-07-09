@@ -100,25 +100,6 @@ body {
   padding: 10px 13px
 }
 
-//.container{
-//  transition: 1s ease-in-out all;
-//  // added Panel animation when adding
-//  &.ng-enter{
-//    transform: scale(.1, .1);
-//    &.ng-enter-active{
-//      transform: scale(1, 1);
-//    }
-//  }
-//
-//  // added Panel animation when removing
-//  &.ng-leave{
-//    transform: scale(1, 1);
-//    &.ng-leave-active{
-//      transform: scale(.1, .1);
-//    }
-//  }
-//}
-
 // Gridster styles
 .gridster{
   .gridster-item-moving{
