@@ -5,31 +5,100 @@ angular.module('dashboardLayoutGridApp')
   .constant('defaultModuleObject', {
     label: 'Test Module New',
     type : 'module_2',
-    max_size: [2, 1],
-    showConfig: false,
-    sizeX: 2,
-    sizeY: 1
+    grid:{
+      showConfig: false,
+      row: 0,
+      col: 0,
+      sizeX: 2,
+      sizeY: 1
+    }
+  })
+  .constant('defaultQuickStatObject', {
+    label: 'Test Module New',
+    type : 'click',
+    grid:{
+      showConfig: false,
+      row: 0,
+      col: 0,
+      sizeX: 1,
+      sizeY: 1
+    }
   })
   .constant('moduleTypeList', [
-    { name: 'Module 1', value: 'module_1', max_size:[1,1] },
-    { name: 'Module 2', value: 'module_2', max_size:[2,1] },
-    { name: 'Module 3', value: 'module_3', max_size:[2,2] }
+    { name: 'Quick Stats', value: 'quickStats', maxSize:[2,1] },
+    { name: 'Recent Messages', value: 'recentMessages', maxSize:[1,1] },
+    { name: 'Featured Offers', value: 'featuredOffers', maxSize:[1,1] },
+    { name: 'Performance Chart', value: 'performanceChart', maxSize:[2,1] }
+  ])
+  .constant('quickStatTypeList', [
+    { name: 'Clicks', value: 'clicks'},
+    { name: 'Impressions', value: 'impressions'},
+    { name: 'Payout', value: 'payout'},
+    { name: 'PayoutYTD', value: 'payoutytd'},
+    { name: 'Conversions', value: 'conversions'}
   ])
 
   .controller('ModuleLayoutCtrl',
-  [ 'defaultModuleObject',
-    'moduleTypeList',
-    function (DEFAULT_MODULE_OBJECT, MODULE_TYPE_LIST) {
+    [ '$scope', 'defaultModuleObject', 'defaultQuickStatObject', 'moduleTypeList', 'quickStatTypeList',
+    function ($scope, DEFAULT_MODULE_OBJECT, DEFAULT_QUICK_STAT_OBJECT, MODULE_TYPE_LIST, QUICK_STAT_TYPE_LIST) {
       var moduleLayout = this;
 
       moduleLayout.moduleTypeList = MODULE_TYPE_LIST;
       moduleLayout.modules = [
         {
-          label: 'Default Module A',
-          type : 'module_2',
-          max_size: [2, 1],
+          label: 'My Quick Stats',
+          type : 'quickStats',
           showConfig: false,
+          quickStatModules:[
+            {
+              type: 'clicks',
+              grid:{
+                row: 0,
+                col: 0,
+                sizeX: 1,
+                sizeY: 1
+              }
+            },
+            {
+              type: 'impressions',
+              grid:{
+                row: 0,
+                col: 1,
+                sizeX: 1,
+                sizeY: 1
+              }
+            },
+            {
+              type: 'payout',
+              grid:{
+                row: 0,
+                col: 2,
+                sizeX: 1,
+                sizeY: 1
+              }
+            },
+            {
+              type: 'payoutYtd',
+              grid:{
+                row: 0,
+                col: 3,
+                sizeX: 1,
+                sizeY: 1
+              }
+            },
+            {
+              type: 'conversions',
+              grid:{
+                row: 0,
+                col: 4,
+                sizeX: 1,
+                sizeY: 1
+              }
+            }
+          ],
           grid : {
+            maxSizeX: 2,
+            maxSizeY: 2,
             row: 0,
             col: 0,
             sizeX: 2,
@@ -37,11 +106,12 @@ angular.module('dashboardLayoutGridApp')
           }
         },
         {
-          label: 'Default Module B',
-          type : 'module_1',
-          max_size: [1, 1],
+          label: 'My Recent Messages',
+          type : 'recentMessages',
           showConfig: false,
           grid : {
+            maxSizeX: 1,
+            maxSizeY: 1,
             row: 1,
             col: 0,
             sizeX: 1,
@@ -49,11 +119,12 @@ angular.module('dashboardLayoutGridApp')
           }
         },
         {
-          label: 'Default Module C',
-          type : 'module_1',
-          max_size: [1, 1],
+          label: 'My Featured Offers',
+          type : 'featuredOffers',
           showConfig: false,
           grid : {
+            maxSizeX: 1,
+            maxSizeY: 1,
             row: 1,
             col: 1,
             sizeX: 1,
@@ -62,8 +133,7 @@ angular.module('dashboardLayoutGridApp')
         },
         {
           label: 'Default Module D',
-          type : 'module_3',
-          max_size: [2, 2],
+          type : 'performanceChart',
           showConfig: false,
           grid : {
             row: 3,
@@ -71,9 +141,59 @@ angular.module('dashboardLayoutGridApp')
             sizeX: 2,
             sizeY: 2
           }
+        },
+        {
+          label: 'Secondary Quick Stats',
+          type : 'quickStats',
+          showConfig: false,
+          quickStatModules:[
+            {
+              type: 'payoutYtd',
+              grid:{
+                row: 0,
+                col: 0,
+                sizeX: 1,
+                sizeY: 1
+              }
+            },
+            {
+              type: 'impressions',
+              grid:{
+                row: 0,
+                col: 1,
+                sizeX: 1,
+                sizeY: 1
+              }
+            },
+            {
+              type: 'clicks',
+              grid:{
+                row: 0,
+                col: 2,
+                sizeX: 1,
+                sizeY: 1
+              }
+            },
+            {
+              type: 'conversions',
+              grid:{
+                row: 0,
+                col: 3,
+                sizeX: 1,
+                sizeY: 1
+              }
+            }
+          ],
+          grid : {
+            row: 6,
+            col: 0,
+            sizeX: 2,
+            sizeY: 1
+          }
         }
       ];
 
+      // modules modifier
       moduleLayout.addNewModule = function () {
         var newModule = angular.extend({}, DEFAULT_MODULE_OBJECT);
         moduleLayout.modules.push(newModule);
@@ -81,6 +201,17 @@ angular.module('dashboardLayoutGridApp')
 
       moduleLayout.removePanel = function (index) {
         moduleLayout.modules.splice(index,1);
+      };
+
+      var quickStatMaxColumn = $scope.quickStatOpts.columns;
+      // quick Stats modifier
+      moduleLayout.addQuickStatsWidget = function(targetModule, index){
+        var newQuickStat = angular.extend({}, DEFAULT_QUICK_STAT_OBJECT);
+        targetModule.quickStatModules.push(newQuickStat);
+      };
+
+      moduleLayout.removeQuickStats = function(targetModule, index){
+        targetModule.quickStatModules.splice(index,1);
       };
 
       moduleLayout.getBackgroundImage = function(type){
@@ -102,5 +233,12 @@ angular.module('dashboardLayoutGridApp')
         flipPanel(panelIndex);
       };
 
+      moduleLayout.showModuleDataContainer = false;
+      moduleLayout.showModuleData = function(){
+        moduleLayout.showModuleDataContainer = !moduleLayout.showModuleDataContainer;
+        if( moduleLayout.showModuleDataContainer){
+          moduleLayout.modulesDataAsString = JSON.stringify(moduleLayout.modules);
+        }
+      }
     }
   ]);

@@ -13,6 +13,5 @@ angular.module('dashboardLayoutGridApp')
           $animate.removeClass(element, 'show-back-side');
         }
       });
-    }
+    };
   });
-
