@@ -4,13 +4,13 @@ angular.module('dashboardLayoutGridApp')
 
   .constant('defaultModuleObject', {
     label: 'Test Module New',
-    type : 'module_2',
+    type : 'recentMessages',
     grid:{
       showConfig: false,
       row: 0,
       col: 0,
-      sizeX: 2,
-      sizeY: 1
+      sizeX: 1,
+      sizeY: 2
     }
   })
   .constant('defaultQuickStatObject', {
