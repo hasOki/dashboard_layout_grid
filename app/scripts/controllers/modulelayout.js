@@ -195,7 +195,7 @@ angular.module('dashboardLayoutGridApp')
 
       // modules modifier
       moduleLayout.addNewModule = function () {
-        var newModule = angular.extend({}, DEFAULT_MODULE_OBJECT);
+        var newModule = new angular.extend({}, DEFAULT_MODULE_OBJECT);
         moduleLayout.modules.push(newModule);
       };
 

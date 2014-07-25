@@ -39,7 +39,7 @@
                                     <div class="panel panel-default panel-preview card face">
                                         <div class="module-preview" style="background-image: url({{ moduleLayout.getBackgroundImage( module.type ) }})"></div>
                                         <div class="panel-heading move-handle">
-                                            <div class="add-button pull-left"
+                                            <div class="add-button pull-left" ng-if="module.type==='quickStats'"
                                                  ng-click="moduleLayout.addQuickStatsWidget(module, $index)" >
                                                 <i class="glyphicon glyphicon-plus-sign"></i>
                                             </div>
