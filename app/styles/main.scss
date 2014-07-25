@@ -74,7 +74,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 970px;
   }
 
   /* Remove the padding we set earlier */
@@ -99,25 +99,6 @@ body {
   @include border-bottom-radius(99px);
   padding: 10px 13px
 }
-
-//.container{
-//  transition: 1s ease-in-out all;
-//  // added Panel animation when adding
-//  &.ng-enter{
-//    transform: scale(.1, .1);
-//    &.ng-enter-active{
-//      transform: scale(1, 1);
-//    }
-//  }
-//
-//  // added Panel animation when removing
-//  &.ng-leave{
-//    transform: scale(1, 1);
-//    &.ng-leave-active{
-//      transform: scale(.1, .1);
-//    }
-//  }
-//}
 
 // Gridster styles
 .gridster{
@@ -157,9 +138,39 @@ body {
   }
 }
 
+// Quick Stats element
+.quick-stats{
+  .quick-stat-widget{
+    width: 20%;
+    min-width: 160px;
+    margin-right: 50px;
+
+    &.ng-enter{
+      transition: .2s ease-out all;
+      transform: scale(.1, .1);
+      opacity: 0;
+      &.ng-enter-active{
+        transform: scale(1, 1);
+        opacity: 1;
+      }
+    }
+
+    // added Panel animation when removing
+    &.ng-leave{
+      transition: .2s ease-in all;
+      transform: scale(1, 1);
+      opacity: 1;
+      &.ng-leave-active{
+        transform: scale(.1, .1);
+        opacity: 0;
+      }
+    }
+  }
+}
+
 // FlipCard Style
 .flip-card{
-  perspective: 800;
+  perspective: 1000;
   position: relative;
   height: 100%;
 
