@@ -217,7 +217,7 @@ angular.module('dashboardLayoutGridApp')
       moduleLayout.getBackgroundImage = function(type){
         // return the background image for the module panel
         //TODO: Check for item width to return the correct image background
-        return '/images/' + type + '_bg.jpg';
+        return 'images/' + type + '_bg.jpg';
       };
 
       var flipPanel = function(index){
