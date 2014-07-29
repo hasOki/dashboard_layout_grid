@@ -208,16 +208,21 @@ angular.module('dashboardLayoutGridApp')
       moduleLayout.addQuickStatsWidget = function(targetModule, index){
         var newQuickStat = angular.extend({}, DEFAULT_QUICK_STAT_OBJECT);
         targetModule.quickStatModules.push(newQuickStat);
+
+        // update the container height
+        targetModule.grid.sizeY = Math.ceil( targetModule.quickStatModules.length / quickStatMaxColumn );
       };
 
       moduleLayout.removeQuickStats = function(targetModule, index){
         targetModule.quickStatModules.splice(index,1);
+        // update the container height
+        targetModule.grid.sizeY = Math.ceil( targetModule.quickStatModules.length / quickStatMaxColumn );
       };
 
       moduleLayout.getBackgroundImage = function(type){
         // return the background image for the module panel
         //TODO: Check for item width to return the correct image background
-        return '/images/' + type + '_bg.jpg';
+        return 'images/' + type + '_bg.jpg';
       };
 
       var flipPanel = function(index){

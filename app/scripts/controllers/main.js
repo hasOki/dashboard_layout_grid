@@ -50,7 +50,7 @@ angular.module('dashboardLayoutGridApp')
       },
       draggable: {
         enabled: true, // whether dragging items is supported
-        handle: '.move-handle' // optional selector for resize handle
+        handle: '.stats-move-handle' // optional selector for resize handle
       }
     };
   });
