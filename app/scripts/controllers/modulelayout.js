@@ -4,22 +4,14 @@ angular.module('dashboardLayoutGridApp')
 
   .constant('defaultModuleObject', {
     label: 'Test Module New',
-    type : 'module_2',
-    grid:{
-      showConfig: false,
-      row: 0,
-      col: 0,
-      sizeX: 2,
-      sizeY: 1
-    }
+    type : 'recentMessages',
+    showConfig: false
   })
   .constant('defaultQuickStatObject', {
     label: 'Test Module New',
     type : 'click',
+    showConfig: false,
     grid:{
-      showConfig: false,
-      row: 0,
-      col: 0,
       sizeX: 1,
       sizeY: 1
     }
@@ -31,11 +23,11 @@ angular.module('dashboardLayoutGridApp')
     { name: 'Performance Chart', value: 'performanceChart', maxSize:[2,1] }
   ])
   .constant('quickStatTypeList', [
-    { name: 'Clicks', value: 'clicks'},
-    { name: 'Impressions', value: 'impressions'},
-    { name: 'Payout', value: 'payout'},
-    { name: 'PayoutYTD', value: 'payoutytd'},
-    { name: 'Conversions', value: 'conversions'}
+    { name: 'Clicks', type: 'clicks'},
+    { name: 'Impressions', type: 'impressions'},
+    { name: 'Payout', type: 'payout'},
+    { name: 'PayoutYTD', type: 'payoutytd'},
+    { name: 'Conversions', type: 'conversions'}
   ])
 
   .controller('ModuleLayoutCtrl',
@@ -43,6 +35,7 @@ angular.module('dashboardLayoutGridApp')
     function ($scope, DEFAULT_MODULE_OBJECT, DEFAULT_QUICK_STAT_OBJECT, MODULE_TYPE_LIST, QUICK_STAT_TYPE_LIST) {
       var moduleLayout = this;
 
+      moduleLayout.qStatModules = QUICK_STAT_TYPE_LIST;
       moduleLayout.moduleTypeList = MODULE_TYPE_LIST;
       moduleLayout.modules = [
         {
@@ -195,7 +188,8 @@ angular.module('dashboardLayoutGridApp')
 
       // modules modifier
       moduleLayout.addNewModule = function () {
-        var newModule = new angular.extend({}, DEFAULT_MODULE_OBJECT);
+        var newModule = angular.extend({}, DEFAULT_MODULE_OBJECT);
+        newModule.grid = {row: 0, col: 0}; // create new gridster attribute
         moduleLayout.modules.push(newModule);
       };
 
@@ -205,8 +199,10 @@ angular.module('dashboardLayoutGridApp')
 
       var quickStatMaxColumn = $scope.quickStatOpts.columns;
       // quick Stats modifier
-      moduleLayout.addQuickStatsWidget = function(targetModule, index){
+      moduleLayout.addQuickStatsWidget = function(targetModule, qStatModule){
         var newQuickStat = angular.extend({}, DEFAULT_QUICK_STAT_OBJECT);
+        newQuickStat.grid = {row: 0, col: 0}; // create new gridster attribute
+        newQuickStat.type = qStatModule.type;
         targetModule.quickStatModules.push(newQuickStat);
 
         // update the container height

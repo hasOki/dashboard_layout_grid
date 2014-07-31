@@ -100,6 +100,11 @@ body {
   padding: 10px 13px
 }
 
+.q-stat-add-button{
+  position: absolute;
+  left: 20px;
+}
+
 // Gridster styles
 .gridster{
   .gridster-item-moving{
@@ -112,6 +117,7 @@ body {
         transform: translateZ(1px); // Added 1px translate to prevent flickering
         position: relative;
         cursor: move;
+        z-index: 50;
       }
 
       .panel-body{
