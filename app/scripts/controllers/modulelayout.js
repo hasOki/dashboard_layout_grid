@@ -200,13 +200,13 @@ angular.module('dashboardLayoutGridApp')
       var quickStatMaxColumn = $scope.quickStatOpts.columns;
       // quick Stats modifier
       moduleLayout.addQuickStatsWidget = function(targetModule, qStatModule){
-        var newQuickStat = angular.extend({}, DEFAULT_QUICK_STAT_OBJECT);
+        var newQuickStat = angular.extend({}, qStatModule);
         newQuickStat.grid = {row: 0, col: 0}; // create new gridster attribute
-        newQuickStat.type = qStatModule.type;
         targetModule.quickStatModules.push(newQuickStat);
 
         // update the container height
         targetModule.grid.sizeY = Math.ceil( targetModule.quickStatModules.length / quickStatMaxColumn );
+        return false;
       };
 
       moduleLayout.removeQuickStats = function(targetModule, index){
